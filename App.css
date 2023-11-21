@@ -1,0 +1,112 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Cairo', sans-serif;
+    /* list-style: none; */
+}
+body {
+    background-color: rgb(1, 9, 53);
+    color: #fff;
+}
+.App {
+    position: relative;
+    width: 700px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(1, 1, 130);
+    border-radius: 10px;
+    box-shadow: 0 10px 10px rgb(0, 0, 0, 0.4);
+    padding: 20px 0;
+}
+form {
+    position: relative;
+    width: 800px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.header {
+    width: 100%;
+    font-size: 18px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+.App input {
+    width: 80%;
+    padding: 2px 20px;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+.App input[type=checkbox] {
+    text-align: center;
+    width: 20px;
+    height: 20px;
+}
+.App select {
+    width: 80%;
+    padding: 7px 20px;
+    margin-bottom: 29px;
+    font-weight: bold;
+    display: block;
+    border: none;
+    border-radius: 5px;
+    outline: none;
+}
+.App label {
+    font-weight: normal;
+}
+.App select option {
+    padding: 7px 15px;
+    background-color: rgb(1, 1, 130);
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+}
+.App button {
+    width: fit-content;
+    background-color: rgb(142, 1, 145);
+    font-weight: bold;
+    padding: 7px 15px;
+    font-size: 18px;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 5px;
+    border: none;
+    transition: 0.3s;
+}
+.App button:hover {
+    background-color: rgb(89, 2, 91);
+}
+.disabled {
+    background-color: gray !important;
+}
+.popup {
+    width: 50%;
+    text-align: center;
+    background-color: #fff;
+    color: rgb(41, 136, 0);
+    position: absolute;
+    padding: 7px 10px;
+    font-size: 25px;
+    font-weight: bold;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgb(0, 0, 0, 0.5);
+    user-select: none;
+}
+.popupBG {
+    position: absolute;
+    background-color: #000000af;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
