@@ -1,11 +1,14 @@
 import Popup from './Popup.js'
-import {useState} from 'react'
+import MyInput from './MyInput.js'
+import { useState } from 'react'
+
+import { Context } from './Context/InputContext.js';
 
 export default function Inputs () {
     const [inputValue, setInputValue] = useState({name: '', phoneNumber: '', age: '', areYouEmployed: false, salary: 'less than 500 $'});
     const [showPopup, setShowPopup] = useState(false);
     const [errorMessage, setErrorMessage] = useState(false);
-    
+
     function handleFormSubmit (e) {
         e.preventDefault();
         setErrorMessage(null)
@@ -24,17 +27,31 @@ export default function Inputs () {
     
     const btnIsDisabled = inputValue.name === '' || inputValue.phoneNumber === '' || inputValue.age === '' || inputValue.areYouEmployed === false || inputValue.salary === '';
     
+    function handleNameChange (value) {
+        setInputValue({...inputValue, name: value})
+    }
+    function handlePhoneNumberChange (value) {
+        setInputValue({...inputValue, phoneNumber: value})
+    }
+    function handleAgeChange (value) {
+        setInputValue({...inputValue, age: value})
+    }
+
     return (
         <div onClick={handleDivClick}>
-            <form>
-                <label>Name:</label>
-                <input placeholder='Name' value={inputValue.name} onChange={(e) => setInputValue({...inputValue, name: e.target.value})}  type="text"  maxlength="10"/>
+            <form> 
 
-                <label>Phone Number:</label>
-                <input placeholder='PhoneNumber'  value={inputValue.phoneNumber} onChange={(e) => setInputValue({...inputValue, phoneNumber: e.target.value})} type="tel"  maxlength="11"/>
+                <Context.Provider value={{ title: "Name:", handleChange: handleNameChange, inputValue: inputValue.name }} >
+                    <MyInput />
+                </Context.Provider>
 
-                <label>Age:</label>
-                    <input placeholder='Age' value={inputValue.age} onChange={(e) => setInputValue({...inputValue, age: e.target.value})} type="text" maxlength="3"/>
+                <Context.Provider value={{ title: "Phone Number:", handleChange: handlePhoneNumberChange, inputValue: inputValue.phoneNumber }} >
+                    <MyInput />
+                </Context.Provider>
+
+                <Context.Provider value={{ title: "Age:", handleChange: handleAgeChange, inputValue: inputValue.age }} >
+                    <MyInput />
+                </Context.Provider>
 
                 <label>Are You Employed:</label>
                 <input  checked={inputValue.areYouEmployed} onChange={(e) => setInputValue({...inputValue, areYouEmployed: e.target.checked})} type="checkbox"/>
@@ -55,32 +72,3 @@ export default function Inputs () {
     
 }
 
-
-
-/*
- onChange={(e) => setInputValue({...inputValue, name: e.target.value})} 
-
- onChange={(e) => setInputValue({...inputValue, phoneNumber: e.target.value})} 
-
- onChange={(e) => setInputValue({...inputValue, areYouEmployed: e.target.checked})} 
-
- onChange={(e) => setInputValue({...inputValue, salary: e.target.value})} 
-
-*/
-
-
-
-    //     function handleAddDivice () {
-    //     return diviceInput !== "" ? setDivices([...divices, diviceInput]) : alert('Input not Found');
-// }
-    
-    
-    // const DivicesList = divices.map((divice) => {
-    //   return (
-    //     <div>
-    //       <li>{divice}</li>
-    //       <button onClick={(e) => e.target.parentNode.remove()}>Delete</button>
-    //     </div>
-    //   );
-// });
-    
